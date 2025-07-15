@@ -7,8 +7,11 @@ import { useRouter } from 'next/navigation'
 import { TypeAnimation } from 'react-type-animation'
 import { Rubik } from 'next/font/google'
 import { easeOut, motion } from 'framer-motion'
-import { Facebook, Instagram, Xrp } from 'iconsax-reactjs'
+import { Facebook, Instagram, Xrp, Designtools, Book, MedalStar, Happyemoji, DocumentDownload, Size } from 'iconsax-reactjs'
 import Navbar from '../../../components/navbar'
+import projects from 'components/projects'
+import Projects from 'components/projects'
+
 
 
 const About = () => {
@@ -38,17 +41,19 @@ const handleClick = () => {
   }}
     
     className='bg-[#121212] items-center justify-center text-center h-full w-full font-rajdhani bg-full '>
-      <div className='w-full justify-between items-center'>
-       <Navbar/>
-      </div>
       <div className=''>
-      <div className='flex mb-7 mt-5'>
+        <Navbar/>
+      </div>
+       
+      
+      <div className=''>
+      <div className='flex flex-col lg:flex-row space-y-12'>
         <Image
           src="/Images/IMG_20240207_235917_693.jpg"
           alt="image"
           width={400}
           height={400}
-          className='border rounded-full p-3 shadow-xl shadow-yellow-50'
+          className='border rounded-full p-3 shadow-xl shadow-yellow-50 ml-4 '
         />
         <h1 className='text-4xl font-bold font-rubik text-primary-500'>
           <TypeAnimation
@@ -72,15 +77,16 @@ const handleClick = () => {
         {/* Hello.{" "} I'm Ayobami, a front-end web developer from Nigeria, building apps and online experiences for companies large and small. */}
       </div>
         <div className='items-center justify-center justify-items-center place-content-center space-y-10'>
-      <div className="grid md:grid-cols-4 gap-6 bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+      <div className="grid grid-cols-2 sm:grid-cols-4 space-x-4
+      gap-6 rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition my-10">
         <div className=' mb-4 bg-primary'>
-        <p className='font-semibold text-gray-800'>Certifications</p>
+        <p className='font-semibold text-white'>Certifications</p>
         <button onClick= {() => setisCertified(!isCertified)} className=' rounded shadow-lg bg-slate-200 px-12 py-10'>
-        &#x2713;
+        <Book/>
         </button>
         {isCertified ?
             (
-            <div className='absolute p-4 border rounded-lg bg-white/95 bg-opacity-100 w-auto h-auto text-black shadow-xl border-gray-200 inset-6 font-serif'>
+            <div className='absolute p-4 border rounded-lg bg-white/95 bg-opacity-100 w-auto h-auto text-black shadow-xl border-gray-200 inset-6 font-serif items-center justify-center'>
              <h1 className='font-extrabold text-2xl'>
                 Certifications
               </h1>
@@ -100,9 +106,9 @@ const handleClick = () => {
 
         </div>
         <div className='mx-12'>
-        <p className='font-semibold text-gray-900'>Projects</p>
+        <p className='font-semibold text-white'>Projects</p>
         <button onClick= {() => setisProject(!isProject)} className=' rounded shadow-lg bg-slate-200 px-12 py-10'>
-        &#x1F4BB; 
+       <Designtools/>
         </button>
         {isProject ?
             (
@@ -110,7 +116,9 @@ const handleClick = () => {
              <h1 className='font-extrabold text-2xl'>
                 Projects
               </h1>
-              <p className='items-center justify-center text-center text-gray-600 min-h-screen font-semibold mt-10'>Loading...</p>
+              <div className='text-gray-600 font-semibold mt-10'>
+                <Projects/>
+              </div>
             
               <button onClick={() => setisProject(false)} className='absolute bottom-4 right-4 bg-black text-white px-4 py-2 rounded shadow mr-4 mb-4'>
                 Close
@@ -125,9 +133,9 @@ const handleClick = () => {
         
         </div>
         <div className='mx-12 items-center justify-center place-items-center'>
-        <p className='font-semibold text-gray-800'>Hobbies</p>
+        <p className='font-semibold text-white'>Hobbies</p>
         <button onClick= {() => setHobbies(!hobbies)} className=' rounded shadow-lg bg-slate-200 px-12 py-10'>
-        &#127944;
+        <Happyemoji/>
         </button>
         { hobbies?
             (
@@ -156,9 +164,9 @@ const handleClick = () => {
         </div>
         
        <div className='mx-12'>
-       <p className='font-semibold text-gray-800'>Skills(Outside Tech)</p>
+       <p className='font-semibold text-white'>Skills</p>
        <button onClick= {() => setSkills(!skills)}className=' rounded shadow-lg bg-slate-200 px-12 py-10'>
-       &#128394;
+       <MedalStar/>
       </button>
       { skills?
             (
@@ -188,13 +196,17 @@ const handleClick = () => {
       </div>
       </div>
 
-      <div className=''>
+      <div className='flex items-center justify-center'>
         <button  onClick={handleClick} className='mx-5 my-10 border-amber-50 rounded-full bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 text-amber-50 px-4 py-4 shadow-black shadow-xl hover:bg-slate-200 font-semibold'>
           Meet Me
         </button>
-        <button className='mx-5 my-10 border-amber-50 rounded-full bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 text-amber-50 px-4 py-4 shadow-black shadow-xl hover:bg-slate-200 font-semibold'>
-          Download My C.V
-        </button>
+        <a 
+          href="/Resume.pdf"
+          download
+        
+        className='inline-flex mx-5 my-10 border-amber-50 rounded-full bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 text-amber-50 px-10 py-4 shadow-black shadow-xl hover:bg-slate-200 font-semibold'>
+          <DocumentDownload/>&nbsp;Download My C.V
+        </a>
       </div>
       </div>
       
